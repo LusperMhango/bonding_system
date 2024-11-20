@@ -38,7 +38,7 @@ function Login() {
             className="mx-auto mb-8 h-40 w-42 rounded"
           />
         </div>
-        <h2 className="font-sans text-xl mb-2 text-center text-blue-900">SFMIS - Login</h2>
+        <h2 className="font-sans text-xl mb-2 text-center text-gray-500">SFMIS-Login</h2>
         <div className="max-w-center-1/4 max-auto">
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="flex justify-center">
@@ -49,7 +49,7 @@ function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="font-sans w-3/4 p-2 border border-yellow-800 py-1"
+                className="font-sans w-3/4 p-2 border border-yellow-800 py-1 shadow-2xl"
               />
             </div>
 
@@ -61,14 +61,14 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="font-sans w-3/4 p-2 border border-yellow-800 py-1"
+                className="font-sans w-3/4 p-2 border border-yellow-800 py-1 shadow-2xl"
               />
             </div>
 
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="font-sans w-3/4 bg-gray-700 text-white p-2 font-semibold py-1 hover:bg-gray-900"
+                className="font-sans w-3/4 bg-gray-700 text-white p-2 font-semibold py-1 hover:bg-gray-900 shadow-2xl"
               >
                 Login
               </button>
@@ -81,28 +81,26 @@ function Login() {
         <div className="flex justify-center">
           <div className="w-3/4 h-px bg-gray-800 my-3"></div>
         </div>
-
-        <div className="mt-6 mr-4">
-          <button
-            type="button"
-            className="mt-2  font-sans block text-blue-800 hover:underline text-center ml-60 font-medium"
-            onClick={() => navigate('/')}
-          >
-            Create Account
-          </button>
-          </div>
-          <div className='ml-2'>
-          <a href="/reset-password" className="font-medium mt-2 font-sans ml-3 block text-blue-800 hover:underline text-center">
-            Lost your password?
-          </a>
-          </div>
-          <p className="font-sans text-gray-600 text-center mt-2">
-            @ 2024 Higher Education Students' Grants & Loans board
-          </p>
-        </div>
-      </div>
-  
-  );
-}
-
+<div className="flex justify-center mt-6">
+  <button
+    type="button"
+    className="font-sans text-gray-500 hover:underline font-medium mr-4"
+    onClick={() => navigate('/')}
+  >
+    Signup
+  </button>
+  <a
+    href="/reset-password"
+    className="font-medium font-sans text-gray-500 hover:underline"
+  >
+    Lost your password?
+  </a>
+</div>
+<p className="font-sans text-gray-600 text-center mt-2 text-sm">
+  @ 2024 Higher Education Students' Grants & Loans board
+</p>
+</div>
+</div>
+);
+  }
 export default Login;

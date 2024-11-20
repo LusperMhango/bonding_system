@@ -32,98 +32,134 @@ export const PersonalDetails = () => {
   };
 
   return (
-    <div>
-      <Navbar/>
-    <div className="flex justify-center items-center min-h-screen bg-gray-400 font-sans">
-      <div className="w-full h-screen p-8 bg-gray-300 shadow-lg rounded-lg mt-16">
-        <h2 className="text-center text-xl font-semibold mb-4 shadow-lg font-sans">
-          BONDING IN PROGRESS
-        </h2>
-
-        <p className="text-center mb-4 border-b-2 border-black w-full shadow-xl font-bold mt-4">Enter Personal Details</p>
-        <div className="flex justify-center items-center font-sans mt-2">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <label className="font-sans mb-4 font-light"><b>Firstname:</b>
+    <div >
+      <Navbar />
+      <div className="flex justify-center items-center min-h-screen bg-gray-100 font-sans">
+        <div className="w-full max-w-2xl p-10 bg-white shadow-2xl rounded-lg mt-16 mb-16">
+          <h2 className="text-center text-2xl font-bold text-gray-800 mb-4">
+            Bonding in Progress
+          </h2>
+          <p className="text-center text-gray-600 mb-8">
+            Enter Personal Details
+          </p>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Firstname
+              </label>
               <input
                 type="text"
                 name="firstname"
-                placeholder="firstname"
+                placeholder="Enter Firstname"
                 value={formData.firstname}
                 onChange={handleInputChange}
-                className="w-80 space-y-4 p-2 border border-yellow-800 border-solid rounded-md placeholder:text-gray-400 flex justify-center items-center " />
-            </label>
+                className="w-full p-3 border border-gray-300 rounded-md placeholder-gray-400"
+              />
+            </div>
 
-            <label className="font-sans mb-4 font-light"><b>Surname:</b>
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Surname
+              </label>
               <input
                 type="text"
                 name="surname"
-                placeholder="Surname"
+                placeholder="Enter Surname"
                 value={formData.surname}
                 onChange={handleInputChange}
-                className="w-80 space-y-4 p-2 border border-yellow-800 rounded-md placeholder:text-gray-400 flex justify-center item-center" />
-            </label>
-            <label className="font-sans mb-4 font-light"><b>Gender:</b>
+                className="w-full p-3 border border-gray-300 rounded-md placeholder-gray-400"
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Gender
+              </label>
               <select
                 name="sex"
                 value={formData.sex}
                 onChange={handleInputChange}
-                className="w-80 space-y-4 p-2 border border-yellow-800 rounded-md text-gray-400 flex justify-center items-center "
+                className="w-full p-3 border border-gray-300 rounded-md placeholder-gray-400"
               >
+                <option value="">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
-            </label>
-            <label className="font-sans mb-4 font-light"><b>phone Number:</b>
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Phone Number
+              </label>
               <input
                 type="tel"
                 name="phoneNumber"
-                placeholder="Phone Number"
+                placeholder="Enter Phone Number"
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
-                className="w-80 space-y-4 p-2 border border-yellow-800 rounded-md placeholder:text-gray-400 flex justify-center items-center " />
-            </label>
-            <label className="font-sans mb-4 font-light"><b>home Village:</b>
+                className="w-full p-3 border border-gray-300 rounded-md placeholder-gray-400"
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Home Village
+              </label>
               <input
                 type="text"
                 name="homeVillage"
-                placeholder="Home Village"
+                placeholder="Enter Home Village"
                 value={formData.homeVillage}
                 onChange={handleInputChange}
-                className="w-80 space-y-4 p-2 border border-yellow-800 rounded-md placeholder:text-gray-400 flex justify-center items-center " />
+                className="w-full p-3 border border-gray-300 rounded-md placeholder-gray-400"
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Traditional Authority
               </label>
-              <label className="font-sans mb-4 font-light"><b>Traditional Authority:</b>
               <input
                 type="text"
                 name="ta"
-                placeholder="T/A"
+                placeholder="Enter T/A"
                 value={formData.ta}
                 onChange={handleInputChange}
-                className="w-80 space-y-4 p-2 border border-yellow-800 rounded-md placeholder:text-gray-400 flex justify-center items-center " />
-                </label>
-              <label className="font-sans mb-4 font-light"><b>National_ID:</b>
+                className="w-full p-3 border border-gray-300 rounded-md placeholder-gray-400"
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                National ID
+              </label>
               <input
                 type="text"
                 name="nationalId"
-                placeholder="National ID"
+                placeholder="Enter National ID"
                 value={formData.nationalId}
                 onChange={handleInputChange}
-                className="w-80 space-y-4 p-2 border border-yellow-800 rounded-md placeholder:text-gray-400 flex justify-center items-center " />
-              {error && <p className="text-red-500 text-sm">{error}</p>}
-              </label>
+                className="w-full p-3 border border-gray-300 rounded-md placeholder-gray-400"
+              />
+            </div>
+
+            {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+
+            <div className="flex justify-end mt-6">
               <button
                 type="submit"
-                className="flex bottom-2 right-2 w-full-3/4 p-2 bg-yellow-600 text-white rounded-md hover:bg-gray-800"
+                className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-800"
               >
                 Proceed
               </button>
+            </div>
+          </form>
 
-            </form>
+          <p className="text-center text-gray-600 text-sm mt-8">
+            &copy; 2024 Higher Education Students' Grants & Loans Board
+          </p>
         </div>
-        <p className="text-center text-sm mt-8 font-sans">
-          @2024 Higher Education<br></br>Students' Grants & Loans Board
-        </p>
       </div>
-    </div>
     </div>
   );
 };

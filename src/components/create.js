@@ -35,7 +35,7 @@ const CreateAccount = () => {
        
         <header className="text-center mb-6">
           <img src="logo.png" alt="Logo" className="w-34 h-32 mx-auto mb-4 rounded-full mt-6" />
-          <h2 className="text-lg font text-blue-800 font-sans">SFMIS - Create Account</h2>
+          <h2 className="text-lg font text-gray-600 font-sans">SFMIS-Create Account</h2>
         </header>
 
         
@@ -47,7 +47,7 @@ const CreateAccount = () => {
               required
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
-              className="text-md w-3/4 p-1 border border-yellow-700  "
+              className="text-md w-3/4 p-1 border border-yellow-700 shadow-2xl"
             />
           </div>
           <div className="flex justify-center">
@@ -57,17 +57,17 @@ const CreateAccount = () => {
               required
               value={surname}
               onChange={(e) => setsurname(e.target.value)}
-              className="text-md w-3/4 p-1 border border-yellow-700"
+              className="text-md w-3/4 p-1 border border-yellow-700 shadow-2xl"
             />
           </div>
           <div className="flex justify-center">
             <input
               type="text"
-              placeholder="regnumber"
+              placeholder="Regnumber"
               required
               value={RegNumber}
               onChange={(e) => setRegnumber(e.target.value)}
-              className="text-md w-3/4 p-1 border border-yellow-700"
+              className="text-md w-3/4 p-1 border border-yellow-700 shadow-2xl"
             />
           </div>
           <div className="flex justify-center">
@@ -77,7 +77,7 @@ const CreateAccount = () => {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="text-md w-3/4 p-1 border border-yellow-700 "
+              className="text-md w-3/4 p-1 border border-yellow-700 shadow-2xl"
             />
           </div>
           <div className="flex justify-center">
@@ -87,7 +87,7 @@ const CreateAccount = () => {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="text-md w-3/4 p-1 border border-yellow-700"
+              className="text-md w-3/4 p-1 border border-yellow-700 shadow-2xl"
             />
           </div>
           <div className="flex justify-center">
@@ -95,22 +95,22 @@ const CreateAccount = () => {
               type="password"
               placeholder="Confirm password"
               required
-              className="text-md w-3/4 p-1 border border-yellow-700"
+              className="text-md w-3/4 p-1 border border-yellow-700 shadow-2xl"
             />
           </div>
 
           <div className="flex justify-between items-center mt-4 px-16">
             <button
               type="submit"
-              className=" ml-36 bg-gray-700 text-white font-semibold py-2 px-4 rounded hover:bg-gray-900 transition"
+              className=" ml-36 bg-gray-700 text-white font-semibold py-1 px-4 rounded hover:bg-gray-900 transition text-md"
             >
               Create Account
             </button>
           </div>
-          <div className='mb-4 flex justify-center item-center ml-4'>
+          <div className='mb-4 flex justify-center item-center ml-4 shadow-2xl'>
           <button
             type="button"
-            className="mb-4 font-sans block text-blue-800 hover:underline text-center font-medium"
+            className="mb-4 font-sans block text-gray-500 hover:underline text-center font-medium"
             onClick={() => navigate('/login')}
           >
             Already have an account?

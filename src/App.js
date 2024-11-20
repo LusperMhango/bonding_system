@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import LandingPage from './components/landingPage';
 import Create from './components/create';
 import Login from './components/login';
-import { LoanAmountDetails } from './components/LoanAmount';
+import ApprovedLoanDetails from './components/LoanAmount';
 import { BankDetails } from './components/bankDetails';
 import { PersonalDetails } from './components/personalDetails';
 
@@ -19,7 +19,7 @@ function App() {
       <Route path="/login" element={<Login/>} />
       <Route path="/landingpage" element={<LandingPage/>} />
       <Route path="/personal" element={<PersonalDetails/>} />
-      <Route path="/loan" element={<LoanAmountDetails/>} />
+      <Route path="/loan" element={<ApprovedLoanDetails/>} />
       <Route path="/bank" element={<BankDetails/>} />
 
 

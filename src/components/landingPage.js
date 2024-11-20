@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
-import axios from 'axios';
+
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
+import axios from "axios";
 
 // Create an Axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:5000/verification/bondstatus',
-  
+  baseURL: "http://localhost:5000", // Correct baseURL for the backend
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
@@ -24,70 +24,79 @@ function LandingPage() {
 
     try {
       // Retrieve the token from localStorage
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem("accessToken");
 
       if (!token) {
-        throw new Error('User is not logged in. Token is missing.');
+        throw new Error("User is not logged in. Token is missing.");
       }
 
       // Make GET API call with Authorization header
-      const response = await api.get('/verification/bondstatus', {
+      const response = await api.get("/verification/bondstatus", {
         headers: {
           Authorization: `Bearer ${token}`, // Attach the Bearer token
         },
       });
 
-      // Check the response and navigate
-      if (response.data === 'verified') {
-        // Redirect the user to the personal page
-        navigate('/personal');
+      // Check the response data
+      if (response.data.startsWith("student")) {
+        // Redirect the user if bonding is allowed
+        navigate("/personal");
       } else {
-        throw new Error('Student bonding status could not be verified.');
+        throw new Error(response.data || "Bonding status verification failed.");
       }
     } catch (err) {
-      console.error('API request failed:', err);
-      setError(err.message || 'Failed to verify bond status. Please try again.');
+      console.error("API request failed:", err);
+      setError(err.message || "Failed to verify bond status. Please try again.");
     } finally {
       setIsLoading(false); // End loading
     }
   };
 
   return (
-    <div className="transition-transform duration-700">
+    <div className="flex flex-col min-h-screen bg-gray-100">
       <Navbar />
-      <div className="flex justify-center w-full">
-        <div className="flex flex-col min-h-screen w-full">
-          <div className="flex-grow pt-20 px-4 bg-gray-200 text-center flex flex-col items-center w-full">
-            <h1 className="font-sans text-2xl text-black mb-8 mt-10 shadow-xl font-bold">
-              WELCOME TO STUDENT BONDING PROCESS
-            </h1>
-
-            <img
-              src="shake.jpg"
-              alt="Handshake illustration"
-              className="mx-auto mb-6 h-96 w-96 sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80 xl:h-full xl:w-96 rounded-3xl shadow-lg border-4 border-gray-300 hover:scale-105 hover:shadow-2xl transition-transform duration-300 mb-2 mt-2"
-            />
-
-            <div className="w-full h-px bg-gray-800 my-2"></div>
-            <div className="w-2/3 h-px bg-gray-800 my-2"></div>
-
-            <button
-              onClick={handleLanding}
-              className="bg-orange-400 text-black rounded-lg font-semibold text-sm px-10 py-2 mt-4 mb-4 hover:bg-orange-500"
-              disabled={isLoading} // Disable button while loading
-            >
-              {isLoading ? 'Loading...' : 'Start Bonding'}
-            </button>
-
-            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-
-            <footer className="w-full p-0 text-center relative bottom-0 left-1/2 transform -translate-x-1/2 mb-16">
-              <p className="text-gray-900 font-sans">@2024 Higher Education</p>
-              <p className="text-gray-900 font-sans">Students' Grants & Loans Board</p>
-            </footer>
-          </div>
+      <main className="flex flex-col justify-center items-center flex-grow">
+        {/* Title Section */}
+        <div className="text-center mb-12">
+          {/* Added margin-bottom */}
+          <h1 className="text-3xl font-bold text-gray-800 tracking-wide">
+            Welcome to the Student Bonding Process
+          </h1>
+          <p className="text-gray-600 mt-2">
+            Join us in creating a better future through higher education.
+          </p>
         </div>
-      </div>
+
+        {/* Illustration */}
+        <div className="relative">
+          <img
+            src="shake.jpg"
+            alt="Handshake illustration"
+            className="w-80 h-80 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] rounded-xl shadow-lg border border-gray-300 transition-transform duration-500 hover:scale-105"
+          />
+        </div>
+
+        {/* Call-to-Action Section */}
+        <div className="mt-6">
+          <button
+            onClick={handleLanding}
+            className="px-8 py-3 text-lg font-medium text-white bg-orange-500 rounded-lg shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors duration-300"
+            disabled={isLoading} // Disable button while loading
+          >
+            {isLoading ? "Processing..." : "Start Bonding"}
+          </button>
+          {error && (
+            <p className="text-red-500 text-sm mt-2 font-medium">{error}</p>
+          )}
+        </div>
+      </main>
+
+      {/* Footer Section */}
+      <footer className="bg-gray-800 text-center py-4 mt-8">
+        <p className="text-gray-300 text-sm">
+          &copy; 2024 Higher Education Students' Grants & Loans Board
+        </p>
+      </footer>
     </div>
   );
 }
