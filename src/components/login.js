@@ -82,23 +82,26 @@ function Login() {
           <div className="w-3/4 h-px bg-gray-800 my-3"></div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 mr-4">
           <button
             type="button"
-            className="mt-2 font-sans block text-blue-800 hover:underline text-center ml-60 font-bold"
+            className="mt-2  font-sans block text-blue-800 hover:underline text-center ml-60 font-medium"
             onClick={() => navigate('/')}
           >
             Create Account
           </button>
-          <a href="/reset-password" className="font-bold mt-2 font-sans ml-3 block text-blue-800 hover:underline text-center">
+          </div>
+          <div className='ml-2'>
+          <a href="/reset-password" className="font-medium mt-2 font-sans ml-3 block text-blue-800 hover:underline text-center">
             Lost your password?
           </a>
+          </div>
           <p className="font-sans text-gray-600 text-center mt-2">
             @ 2024 Higher Education Students' Grants & Loans board
           </p>
         </div>
       </div>
-    </div>
+  
   );
 }
 

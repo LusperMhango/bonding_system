@@ -1,91 +1,122 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from './api';
 
 const CreateAccount = () => {
+  const [firstname, setFirstname] = useState('');
+  const [surname, setsurname] = useState('');
+  const [RegNumber, setRegnumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  const handleAccount = async (e) => {
+    e.preventDefault();
+  
+  try{
+    const response = await api.post('/auth/create',{firstname, surname, RegNumber, email, password})
+
+    const token = response.data.accessToken
+    
+    localStorage.setItem('accessToken', token);
+      
+      navigate('/login');
+    } catch (error) {
+      console.error('failed to create an account:', error);
+      setError('incorrect input');
+    }
+
+    }
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-800 py-10 px-4 scroll w-full overflow-y-auto transform transition">
-      <div className="max-w-2xl bg-white px-4 center border border-gray-300 rounded shadow-2xl w-full transition max-h-screen-1/2">
-        {/* Header */}
+      <div className="max-w-xl bg-white px-4 center border border-gray-200 rounded shadow-lg w-full transition max-h-screen-1/2">
+       
         <header className="text-center mb-6">
-          <img src="logo.png" alt="Logo" className="w-32 h-32 mx-auto mb-4 rounded-full mt-6"/>
-          <h2 className="text-xl font text-blue-800 font-sans">SFMIS - Create Account</h2>
+          <img src="logo.png" alt="Logo" className="w-34 h-32 mx-auto mb-4 rounded-full mt-6" />
+          <h2 className="text-lg font text-blue-800 font-sans">SFMIS - Create Account</h2>
         </header>
 
-        {/* Form */}
-        <form className="space-y-4 max-h-1/2">
-          <div className='flex justify-center'>
+        
+        <form onSubmit= {handleAccount} className="space-y-4 max-h-1/2">
+          <div className="flex justify-center">
             <input
               type="text"
-              placeholder="Firstname"
+              placeholder="firstname"
               required
-              className="text-lg w-3/4 p-2 border border-yellow-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+              className="text-md w-3/4 p-1 border border-yellow-700  "
             />
           </div>
-          <div className='flex justify-center'>
+          <div className="flex justify-center">
             <input
               type="text"
-              placeholder="Surname"
+              placeholder="surname"
               required
-              className="text-lg w-3/4 p-2 border border-yellow-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={surname}
+              onChange={(e) => setsurname(e.target.value)}
+              className="text-md w-3/4 p-1 border border-yellow-700"
             />
           </div>
-          <div className='flex justify-center'>
+          <div className="flex justify-center">
             <input
               type="text"
-              placeholder="RegNumber"
+              placeholder="regnumber"
               required
-              className="text-lg w-3/4 p-2 border border-yellow-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={RegNumber}
+              onChange={(e) => setRegnumber(e.target.value)}
+              className="text-md w-3/4 p-1 border border-yellow-700"
             />
           </div>
-          <div className='flex justify-center'>
+          <div className="flex justify-center">
             <input
               type="email"
-              placeholder="Email"
+              placeholder="email"
               required
-              className="text-lg w-3/4 p-2 border border-yellow-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="text-md w-3/4 p-1 border border-yellow-700 "
             />
           </div>
-          <div className='flex justify-center'>
+          <div className="flex justify-center">
             <input
               type="password"
-              placeholder="Password"
+              placeholder="password"
               required
-              className="text-lg w-3/4 p-2 border border-yellow-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="text-md w-3/4 p-1 border border-yellow-700"
             />
           </div>
-          <div className='flex justify-center'>
+          <div className="flex justify-center">
             <input
               type="password"
               placeholder="Confirm password"
               required
-              className="text-lg w-3/4 p-2 border border-yellow-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="text-md w-3/4 p-1 border border-yellow-700"
             />
           </div>
 
           <div className="flex justify-between items-center mt-4 px-16">
             <button
-              type="button"
-              className="ml-4 bg-yellow-600 text-white font-semibold py-1 px-2 rounded-lg hover:bg-yellow-700 transition "
-              onClick={() => navigate('/login')}
-            >
-              Log in
-            </button>
-            <button
               type="submit"
-              className="mr-4 bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-yellow-700 transition"
-              onClick={() => navigate('/landingpage')}
+              className=" ml-36 bg-gray-700 text-white font-semibold py-2 px-4 rounded hover:bg-gray-900 transition"
             >
               Create Account
             </button>
           </div>
+          <div className='mb-4 flex justify-center item-center ml-4'>
+          <button
+            type="button"
+            className="mb-4 font-sans block text-blue-800 hover:underline text-center font-medium"
+            onClick={() => navigate('/login')}
+          >
+            Already have an account?
+          </button>
+          </div>
         </form>
-
-        {/* Footer */}
-        <footer className="mt-6 text-center text-gray-500 text-sm">
-          {/* Optional Footer Content */}
-        </footer>
       </div>
     </div>
   );
