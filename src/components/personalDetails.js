@@ -34,13 +34,13 @@ export const PersonalDetails = () => {
   return (
     <div >
       <Navbar />
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 font-sans">
+      <div className="flex justify-center items-center min-h-screen bg-gray-300 font-sans">
         <div className="w-full max-w-2xl p-10 bg-white shadow-2xl rounded-lg mt-16 mb-16">
-          <h2 className="text-center text-2xl font-bold text-gray-800 mb-4">
-            Bonding in Progress
+          <h2 className="text-center text-2xl font-bold text-gray-800 mb-4 font-sans">
+            PERSONAL DETAILS FORM
           </h2>
-          <p className="text-center text-gray-600 mb-8">
-            Enter Personal Details
+          <p className="text-center text-gray-600 mb-8 font-sans">
+            Please enter accurate personal Details
           </p>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
@@ -155,7 +155,7 @@ export const PersonalDetails = () => {
             </div>
           </form>
 
-          <p className="text-center text-gray-600 text-sm mt-8">
+          <p className="text-center text-gray-600 text-sm mt-8 font-sans">
             &copy; 2024 Higher Education Students' Grants & Loans Board
           </p>
         </div>

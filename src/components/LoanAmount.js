@@ -13,13 +13,13 @@ const ApprovedLoanDetails = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 font-sans">
+      <div className="flex justify-center items-center min-h-screen bg-gray-300 font-sans">
         <div className="w-full max-w-2xl p-8 bg-white shadow-lg rounded-lg ">
           <h2 className="text-center text-2xl font-bold text-gray-800 mb-4">
-            Bonding in Progress
+          LOAN AMOUNT FORM
           </h2>
           <p className="text-center text-gray-600 mb-8">
-            Step 4: Enter Loan Amount Details
+          Please provide accurate banking details for bonding.
           </p>
           <form className="space-y-6">
             <div>
@@ -86,7 +86,7 @@ const ApprovedLoanDetails = () => {
             </div>
           </form>
 
-          <p className="text-center text-gray-600 text-sm mt-8">
+          <p className="text-center text-gray-600 text-sm mt-8 font-sans">
             &copy; 2024 Higher Education Students' Grants & Loans Board
           </p>
         </div>

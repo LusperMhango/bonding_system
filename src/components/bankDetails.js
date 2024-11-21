@@ -30,12 +30,12 @@ export const BankDetails = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex justify-center items-center min-h-screen bg-gray-200 font-sans">
+      <div className="flex justify-center items-center min-h-screen bg-gray-300 font-sans">
         <div className="w-full max-w-2xl p-8 bg-white shadow-lg rounded-lg max-h-screen-1/2 mt-16 mb-16">
-          <h2 className="text-center text-2xl font-bold text-gray-800 mb-4 ">
-            Bank Details Form
+          <h2 className=" font-sans text-center text-2xl font-bold text-gray-800 mb-4 ">
+            BANK DETAILS FORM
           </h2>
-          <p className="text-center text-gray-600 mb-8">
+          <p className="text-center text-gray-600 mb-8 font-sans">
             Please provide accurate banking details for bonding.
           </p>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -108,12 +108,12 @@ export const BankDetails = () => {
                 type="submit"
                 className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-800"
               >
-                Proceed
+                Finish
               </button>
             </div>
           </form>
 
-          <p className="text-center text-gray-600 text-sm mt-8">
+          <p className="text-center text-gray-600 text-sm mt-8 font-sans">
             &copy; 2024 Higher Education Students' Grants & Loans Board
           </p>
         </div>

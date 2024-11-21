@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { typeOrmConfig, typeOrmConfigStatus} from 'typeOrmConfig';
+import { typeOrmConfig, typeOrmConfigStatus, typeOrmConfigloans} from 'typeOrmConfig';
 import { AuthDbModule } from './auth_db/auth_db.module';
 import { LoansDbModule } from './loans_db/loans_db.module';
 import { AuthModule } from './auth/auth.module';
@@ -18,6 +18,7 @@ import { typeOrmConfigUniversity } from 'typeOrmConfigUniversity';
   imports:[TypeOrmModule.forRoot(typeOrmConfigUniversity),
            TypeOrmModule.forRoot(typeOrmConfig),
            TypeOrmModule.forRoot(typeOrmConfigStatus),
+           TypeOrmModule.forRoot(typeOrmConfigloans),
     AuthDbModule,
     LoansDbModule,
     AuthModule,

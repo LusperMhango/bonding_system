@@ -1,8 +1,8 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
+import Footer from "./footer";
 
 // Create an Axios instance
 const api = axios.create({
@@ -53,51 +53,45 @@ function LandingPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
+    <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-500 via-blue-600 to-blue-600 text-white">
       <Navbar />
-      <main className="flex flex-col justify-center items-center flex-grow">
-        {/* Title Section */}
-        <div className="text-center mb-12">
-          {/* Added margin-bottom */}
-          <h1 className="text-3xl font-bold text-gray-800 tracking-wide">
-            Welcome to the Student Bonding Process
+      <main className="flex flex-col lg:flex-row items-center justify-between flex-grow max-w-6xl mx-auto px-6 lg:px-12 py-12 font-sans">
+        {/* Text Section */}
+        <div className="flex flex-col text-center lg:text-left max-w-lg">
+          <h1 className="text-4xl font-extrabold leading-tight tracking-wide font-sans">
+            Your Effortless Bonding Process
           </h1>
-          <p className="text-gray-600 mt-2">
-            Join us in creating a better future through higher education.
+          <p className="text-lg mt-4 font-medium">
+            Start your journey toward higher education with ease and assurance.
           </p>
+          <div className="mt-8">
+            <button
+              onClick={handleLanding}
+              className="px-6 py-2 mt-2 text-lg font-medium text-white bg-orange-500 rounded-lg shadow-lg hover:bg-yellow-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 transition-all duration-300 shadow-2xl"
+               // Disable button while loading
+            >
+                Start bonding
+            </button>
+            {error && (
+              <p className="text-red-500 text-sm mt-4 font-medium">{error}</p>
+            )}
+          </div>
         </div>
 
-        {/* Illustration */}
-        <div className="relative">
+        {/* Image Section */}
+        <div className="mt-12 lg:mt-0 lg:ml-8">
           <img
             src="shake.jpg"
             alt="Handshake illustration"
-            className="w-80 h-80 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] rounded-xl shadow-lg border border-gray-300 transition-transform duration-500 hover:scale-105"
+            className="w-full max-w-sm sm:max-w-md lg:max-w-lg rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
           />
         </div>
-
-        {/* Call-to-Action Section */}
-        <div className="mt-6">
-          <button
-            onClick={handleLanding}
-            className="px-8 py-3 text-lg font-medium text-white bg-orange-500 rounded-lg shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors duration-300"
-            disabled={isLoading} // Disable button while loading
-          >
-            {isLoading ? "Processing..." : "Start Bonding"}
-          </button>
-          {error && (
-            <p className="text-red-500 text-sm mt-2 font-medium">{error}</p>
-          )}
-        </div>
       </main>
-
-      {/* Footer Section */}
-      <footer className="bg-gray-800 text-center py-4 mt-8">
-        <p className="text-gray-300 text-sm">
-          &copy; 2024 Higher Education Students' Grants & Loans Board
-        </p>
-      </footer>
-    </div>
+      <div>
+      <Footer/>
+      </div>
+      </div>
+      
   );
 }
 
